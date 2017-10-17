@@ -43,3 +43,38 @@ def main():
     print('x = ', x)
     
     # initial conditions
+    phiOld = squareWave(x, squareWaveMin, squareWaveMax)
+    
+    # analytic solution (of square wave profile in an infinite domain)
+    phiAnalytic = analyticErf(x, K*dt*nt, squareWaveMin, squareWaveMax)
+    
+    # diffusion using FTCS and BTCS
+    phiFTCS = FTCS(phiOld.copy(), d, nt)
+    phiBTCS = BTCS(phiOld.copy(), d, nt)
+    
+    # calculate and print out error norms
+    print("FTCS L2 error norm = ", L2ErrorNorm(phiFTCS, phiAnalytic))
+    print("BTCS L2 error norm = ", L2ErrorNorm(phiBTCS, phiAnalytic))
+    
+    # plot the solutions
+    font = {'size' : 20}
+    plt.rc('font', **font)
+    plt.figure(1)
+    plt.clf()
+    plt.ion()
+    plt.plot(x, phiOld, label='Initial', color='black')
+    plt.plot(x, phiAnalytic, label='Analytic', color='black', linestyle='--', \
+             linewidth=2)
+    plt.plot(x, phiFTCS, label='FTCS', color='blue')
+    plt.plot(x, phiBTCS, label='BTCS', color='red')
+    plt.axhline(0, linestyle=':', color='black')
+    plt.ylim([0,1])
+    plt.legend(bbox_to_anchor=(1.1, 1))
+    plt.xlabel('$x$')
+    plt.savefig('plots/FTCS_BTCS.pdf')
+    
+main()    
+    
+    
+    
+    
