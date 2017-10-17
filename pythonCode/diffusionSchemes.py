@@ -23,14 +23,14 @@ def FTCS(phiOld, d, nt):
     for it in range(int(nt)):
         
         # initial endpoint for spatial coordinates
-        phi[0] = phiOld[0] + d*(phiOld[j] - 2*phiOld[j+1] + phiOld[j+2])
+        phi[0] = phiOld[0] + d*(phiOld[0] - 2*phiOld[1] + phiOld[2])
         
         # spatial points, endpoints excluded
         for j in range(1,nx-1):
             phi[j] = phiOld[j] + d*(phiOld[j+1] - 2*phiOld[j] + phiOld[j-1])
        
         # final endpoint for spatial coordinates
-        phi[nx-1] = phiOld[0] + d*(phiOld[j-2] - 2*phiOld[j-1] + phiOld[j])
+        phi[nx-1] = phiOld[0] + d*(phiOld[nx-3] - 2*phiOld[nx-2] + phiOld[nx-1])
         
         # output to phiOld for the next time-step
         phiOld = phi

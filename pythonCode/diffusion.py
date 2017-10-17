@@ -9,9 +9,9 @@ import matplotlib.pyplot as plt
 
 # read in all the linear advection schemes, initial conditions and other
 # code associated with this application
-execfile("diffusionSchemes.py")
-execfile("diagnostics.py")
-execfile("initialConditions.py")
+runfile("diffusionSchemes.py")
+runfile("diagnostics.py")
+runfile("initialConditions.py")
 
 def main():
     """
