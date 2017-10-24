@@ -42,28 +42,58 @@ in time, centred in space (BTCS) diffusion schemes are shown in figure
 for $x\in[0,1]$ and are subject to boundary conditions $\partial\phi(0,t)/\partial x=\partial\phi(1,t)/\partial x=0$
 for all time. The schemes use $n_{x}=41$ points in space and the
 simulation runs for $n_{t}=40$ time-steps, each of length $\Delta t=0.1$s
-using a diffusion number of $K=10^{-3}m^{2}s^{-1}$. The results are
+using a diffusion number of $K=10^{-3}\text{m}^{2}\text{s}^{-1}$. The results are
 compared with an analytic solution. The analytic solution assumes
 an infinite domain.
 
-
 \begin{figure}[!tbh]
-% Uncomment these lines to include the figures
-%\includegraphics[width=0.48\linewidth]{../pythonCode/plots/FTCS_BTCS.pdf}
-%\includegraphics[width=0.48\linewidth]{../pythonCode/plots/FTCS_BTCS_Error.pdf}
+\includegraphics[width=0.48\linewidth]{Question1.pdf}
+\includegraphics[width=0.48\linewidth]{Question1_errors.pdf}
 
 \caption{Results of FTCS and BTCS in comparison to the analytic solution. Results
 use 41 points in space and the simulation runs for 40 time-steps,
-each of length $\Delta t=0.1$s using a diffusion number of $K=10^{-3}m^{2}s^{-1}$.
+each of length $\Delta t=0.1$s using a diffusion number of $K=10^{-3}\text{m}^{2}\text{s}^{-1}$.
 \label{fig:Q1}}
 \end{figure}
 
+It should be pointed out that the Von-Neumann stability analysis of the FTCS scheme tells us that in order to be using a neutrally stable numerical method the non-dimensional diffusion coefficient has to be less than 0.5, which is true for this particular case where $d=0.16$.
+
 
 \item The one-dimensional diffusion equation can be used, for example, to
-represent ...
-These initial conditions could represent ...
-These boundary conditions ...
+calculate the temperature distribution in a rod (or any similar unidimensional physical situation) and its variation in time. The particular initial conditions imposed could represent an initial temperature profile associated to a warm and sharply-constrained core (because of the step-function) in the middle of the rod, whereas the boundary conditions require that the system be isolated, i.e. not exchanging heat with the outside.
+
+\item If we run the FTCS scheme for a sufficiently long duration, it gives then significantly different results from the analytic solution and this is due to the order of accuracy featured by this scheme, which is only first time-accurate. It can be seen from figure \ref{fig:Q3} that as the time increases the numerical solutions found with both FTCS and BTCS schemes remarkably diverge from the analytic solution.
+
+\begin{figure}[!tbh]
+\includegraphics[width=0.48\linewidth]{Question3(t=25).pdf}
+\includegraphics[width=0.48\linewidth]{Question3(t=25)_errors.pdf}
+\includegraphics[width=0.48\linewidth]{Question3(t=50).pdf}
+\includegraphics[width=0.48\linewidth]{Question3(t=50)_errors.pdf}
+\includegraphics[width=0.48\linewidth]{Question3(t=75).pdf}
+\includegraphics[width=0.48\linewidth]{Question3(t=75)_errors.pdf}
+\includegraphics[width=0.48\linewidth]{Question3(t=100).pdf}
+\includegraphics[width=0.48\linewidth]{Question3(t=100)_errors.pdf}
+
+\caption{Time-evolution of FTCS and BTCS in comparison to the analytic solution. Results
+use 41 points in space and the simulation runs for 250, 500, 750 and 1000 time-steps,
+each of length $\Delta t=0.1$s using a diffusion number of $K=10^{-3}\text{m}^{2}\text{s}^{-1}$.
+\label{fig:Q3}}
+\end{figure}
+
 
 \end{enumerate}
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
 

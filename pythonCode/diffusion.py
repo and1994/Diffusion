@@ -14,7 +14,7 @@ runfile("diagnostics.py")
 runfile("initialConditions.py")
 
 def main(xmin = 0., xmax = 1., nx = 41, nt = 40, dt = 0.1, K = 1e-3, \
-         squareWaveMin = 0.4, squareWaveMax = 0.6, name_fig='question3'):
+         squareWaveMin = 0.4, squareWaveMax = 0.6, name_fig='Question3'):
     """
     Diffuse a squareWave between squareWaveMin and squareWaveMax on a domain
     between x = xmin and x = xmax split over nx spatial steps with diffusion
@@ -64,7 +64,8 @@ def main(xmin = 0., xmax = 1., nx = 41, nt = 40, dt = 0.1, K = 1e-3, \
     plt.ylim([0,1])
     plt.legend(bbox_to_anchor=(1.1, 1))
     plt.xlabel('$x$')
-    plt.savefig('Plots/'+name_fig+'.pdf')
+    plt.title('t ='+str(nt*dt))
+    plt.savefig('Plots/'+name_fig+'(t='+str(nt*dt)+').pdf')
     
     # plot the errors
     plt.figure(2)
@@ -76,7 +77,9 @@ def main(xmin = 0., xmax = 1., nx = 41, nt = 40, dt = 0.1, K = 1e-3, \
     plt.ylim([-0.05,0.05])
     plt.legend(bbox_to_anchor=(1.1, 1))
     plt.xlabel('$x$')
-    plt.savefig('Plots/'+name_fig+'_errors.pdf')
+    plt.title('t ='+str(nt*dt))
+    plt.savefig('Plots/'+name_fig+'(t='+str(nt*dt)+')_errors.pdf')
+    
     
     ##
 main()
