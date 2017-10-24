@@ -24,14 +24,17 @@ def FTCS(phiOld, d, nt):
         
         # initial endpoint for spatial coordinates
         phi[0] = phiOld[0] + d*(phiOld[0] - 2*phiOld[1] + phiOld[2])
+        phi[1]=phi[0]
         
         # spatial points, endpoints excluded
-        for j in range(1,nx-1):
+        for j in range(2,nx-2):
             phi[j] = phiOld[j] + d*(phiOld[j+1] - 2*phiOld[j] + phiOld[j-1])
+        
+        
        
         # final endpoint for spatial coordinates
         phi[nx-1] = phiOld[0] + d*(phiOld[nx-3] - 2*phiOld[nx-2] + phiOld[nx-1])
-        
+        phi[nx-2] = phi[nx-1]
         # output to phiOld for the next time-step
         phiOld = phi
         
@@ -49,13 +52,13 @@ def BTCS(phi, d, nt):
     M = np.zeros([nx,nx])
     
     # Zero gradient boundary conditions
-    M[0,0] = 1
-    M[0,1] = -1
-    M[-1,-1] = 1
-    M[-1,-2] = -1
+    M[0,0] = 1.
+    M[0,1] = -1.
+    M[-1,-1] = 1.
+    M[-1,-2] = -1.
     for i in range(1,nx-1):
         M[i,i-1] = -d
-        M[i,i] = 1+2*d
+        M[i,i] = 1.+2*d
         M[i,i+1] = -d
     
     # BTCS for all time steps

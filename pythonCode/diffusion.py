@@ -8,7 +8,7 @@ from __future__ import absolute_import, division, print_function
 import matplotlib.pyplot as plt
 
 # read in all the linear advection schemes, initial conditions and other
-# code associated with this application
+# code associated with this application (substitute with execfile if supported)
 runfile("diffusionSchemes.py")
 runfile("diagnostics.py")
 runfile("initialConditions.py")
