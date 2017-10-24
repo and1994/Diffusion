@@ -78,4 +78,5 @@ def main(xmin = 0., xmax = 1., nx = 41, nt = 40, dt = 0.1, K = 1e-3, \
     plt.xlabel('$x$')
     plt.savefig('Plots/'+name_fig+'_errors.pdf')
     
+    ##
 main()
