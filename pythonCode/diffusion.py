@@ -64,22 +64,27 @@ def main(xmin = 0., xmax = 1., nx = 41, nt = 40, dt = 0.1, K = 1e-3, \
     plt.ylim([0,1])
     plt.legend(bbox_to_anchor=(1.1, 1))
     plt.xlabel('$x$')
-    plt.title('t ='+str(nt*dt))
-    plt.savefig('Plots/'+name_fig+'(t='+str(nt*dt)+').pdf')
+    plt.title("t = {:.1f}, d = {:.2f}".format(nt*dt, d))
+    plt.savefig('Plots/' + name_fig + '(t=' + str(int(nt*dt)) + ').pdf')
     
     # plot the errors
     plt.figure(2)
     plt.clf()
     plt.ion()
-    plt.plot(x, phiFTCS - phiAnalytic, label='Error FTCS', color='blue')
-    plt.plot(x, phiBTCS - phiAnalytic, label='Error BTCS', color='red')
+    
+    # defining the error vectors that are used in the graph and for evaluating
+    # the extremes (m) on the y-axis for plotting
+    errorFTCS = phiFTCS - phiAnalytic
+    errorBTCS = phiBTCS - phiAnalytic
+    m = max(abs(errorFTCS).max(), abs(errorBTCS).max())
+    
+    plt.plot(x, errorFTCS, label='Error FTCS', color='blue')
+    plt.plot(x, errorBTCS, label='Error BTCS', color='red')
     plt.axhline(0, linestyle=':', color='black')
-    plt.ylim([-0.05,0.05])
-    plt.legend(bbox_to_anchor=(1.1, 1))
+    plt.ylim([-m,m])
+    plt.legend()
     plt.xlabel('$x$')
-    plt.title('t ='+str(nt*dt))
-    plt.savefig('Plots/'+name_fig+'(t='+str(nt*dt)+')_errors.pdf')
+    plt.title("t = {:.1f}, d = {:.2f}".format(nt*dt, d))
+    plt.savefig('Plots/' + name_fig + '(t=' + str(int(nt*dt)) + ')_errors.pdf')
     
     
-    ##
-main()

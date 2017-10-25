@@ -52,7 +52,7 @@ an infinite domain.
 
 \caption{Results of FTCS and BTCS in comparison to the analytic solution. Results
 use 41 points in space and the simulation runs for 40 time-steps,
-each of length $\Delta t=0.1$s using a diffusion number of $K=10^{-3}\text{m}^{2}\text{s}^{-1}$.
+each of length $\Delta t=0.1$s using a diffusion number of $K=10^{-3}\text{m}^{2}\text{s}^{-1}$, which yields $d=0.16$.
 \label{fig:Q1}}
 \end{figure}
 
@@ -76,9 +76,37 @@ calculate the temperature distribution in a rod (or any similar unidimensional p
 
 \caption{Time-evolution of FTCS and BTCS in comparison to the analytic solution. Results
 use 41 points in space and the simulation runs for 250, 500, 750 and 1000 time-steps,
-each of length $\Delta t=0.1$s using a diffusion number of $K=10^{-3}\text{m}^{2}\text{s}^{-1}$.
+each of length $\Delta t=0.1$s using a diffusion number of $K=10^{-3}\text{m}^{2}\text{s}^{-1}$, which yields $d=0.16$.
 \label{fig:Q3}}
 \end{figure}
+
+\item To test the stability of the implementations of the FTCS and BTCS schemes a Von-Neumann stability analysis can be performed. This analysis guarantees a stable numerical solution of the FTCS scheme for values of the non-dimensional diffusion coefficient $d$ as follows,
+\begin{equation}
+d=K\frac{\Delta t}{{\Delta x}^2} \leq \frac{1}{2},
+\end{equation}
+whereas for the BTCS an unconditional stability is found for any value of the coefficient $d$.\par
+In order to check whether this is true, the computation of the numerical solution can be performed using different values of the time step $\Delta t$, so that the coefficient $d$ be smaller or greater than 0.5.
+
+\begin{figure}[!tbh]
+\includegraphics[width=0.48\linewidth]{Q4_b(t=4).pdf}
+\includegraphics[width=0.48\linewidth]{Q4_b(t=4)_errors.pdf}
+\includegraphics[width=0.48\linewidth]{Q4_c(t=4).pdf}
+\includegraphics[width=0.48\linewidth]{Q4_c(t=4)_errors.pdf}
+\includegraphics[width=0.48\linewidth]{Q4_d(t=4).pdf}
+\includegraphics[width=0.48\linewidth]{Q4_d(t=4)_errors.pdf}
+\includegraphics[width=0.48\linewidth]{Q4_e(t=4).pdf}
+\includegraphics[width=0.48\linewidth]{Q4_e(t=4)_errors.pdf}
+
+\caption{Results of numerical computation using different values of non-dimensional parameter d with $K=10^{-3}\text{m}^{2}\text{s}^{-1}$ and $\Delta t$ fixed and different values for $\Delta x$. On the right of each solutions' graph the respective error graph is shown. Noticeable are the great extent of FTCS scheme's error in the last graph, due to its high instability for $d=1.44$, and the unconditional stability of the BTCS scheme.
+\label{fig:Q4}}
+\end{figure}
+
+In figure \ref{fig:Q4} are presented the results of this experiments for different values of $d$ (refer to figure \ref{fig:Q1} for $d=0.16$): it can be noticed how the stability of the numerical method used in FTCS is affected by thickening the spatial grid on which the computation is performed. Similar results can be obtained if the spacial grid is fixed and the time steps are shortened, although this affects the stability in a more gradual way as $d\propto \Delta t$. \par
+On the other hand, the BTCS scheme appears to be always stable, regardless of the value of $d$, as expected.
+
+\item 
+
+
 
 
 \end{enumerate}

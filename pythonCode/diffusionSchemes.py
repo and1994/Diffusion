@@ -12,7 +12,8 @@ def FTCS(phiOld, d, nt):
     Diffusion of profile in phiOld using FTCS using non-dimensional diffusion
     coefficient, d.
     Spatial endpoints obtained through FTFC and FTBS as FTCS could not be used
-    there.
+    there. Furthermore, boundary conditions (gradient of phi = 0 at the
+    boundary points) are imposed.
     """
     nx = len(phiOld)
     
@@ -22,17 +23,16 @@ def FTCS(phiOld, d, nt):
     # FTCS for all time steps
     for it in range(int(nt)):
         
-        # initial endpoint for spatial coordinates
+        #initial endpoint for spatial coordinates (imposing boundary conditions)
         phi[0] = phiOld[0] + d*(phiOld[0] - 2*phiOld[1] + phiOld[2])
         phi[1]=phi[0]
         
         # spatial points, endpoints excluded
         for j in range(2,nx-2):
             phi[j] = phiOld[j] + d*(phiOld[j+1] - 2*phiOld[j] + phiOld[j-1])
-        
-        
+            
        
-        # final endpoint for spatial coordinates
+        # final endpoint for spatial coordinates (imposing boundary conditions)
         phi[nx-1] = phiOld[0] + d*(phiOld[nx-3] - 2*phiOld[nx-2] + phiOld[nx-1])
         phi[nx-2] = phi[nx-1]
         # output to phiOld for the next time-step
