@@ -103,10 +103,11 @@ def nrms_error_graph(N):
     plt.figure(3)
     plt.clf()
     plt.ion()
-    plt.loglog(vector[:,0].transpose(), vector[:,1].transpose(), label='FTCS',\
-               color='blue')
-    plt.loglog(vector[:,0].transpose(), vector[:,2].transpose(), label='BTCS',\
-               color='red')
+    plt.loglog(vector[:,0].transpose(), vector[:,1].transpose(),'bx',\
+               label='FTCS')
+    plt.loglog(vector[:,0].transpose(), vector[:,2].transpose(),'ro',\
+               label='BTCS')
+    plt.loglog(vector[:,0].transpose(),8*(vector[:,0].transpose())**2)
     plt.legend()
     plt.xlabel('$\Delta x$')
     plt.ylabel('$\ell_2$ Norm Error')
