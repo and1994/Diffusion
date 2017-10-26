@@ -94,10 +94,10 @@ def main(xmin = 0., xmax = 1., nx = 41, d = 0.16, K = 1e-3, \
     
     return dx, L2errFTCS, L2errBTCS
 
-def nrms_error_graph(N):
+def nrms_error_graph(N,d_fixed):
     vector = np.zeros((N,3))
     for it in range(N):
-        vector[it,:] = main(nx=21+it*50,d=0.16)
+        vector[it,:] = main(nx=21+it*50,d=d_fixed)
     font = {'size' : 10}
     plt.rc('font', **font)
     plt.figure(3)
