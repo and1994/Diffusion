@@ -65,6 +65,7 @@ calculate the temperature distribution in a rod (or any similar unidimensional p
 \item If we run the FTCS scheme for a sufficiently long duration, it gives then significantly different results from the analytic solution and this is due to the order of accuracy featured by this scheme, which is only first time-accurate. It can be seen from figure \ref{fig:Q3} that as the time increases the numerical solutions found with both FTCS and BTCS schemes remarkably diverge from the analytic solution.
 
 \begin{figure}[!tbh]
+\centering
 \includegraphics[width=0.48\linewidth]{Question3(t=25).pdf}
 \includegraphics[width=0.48\linewidth]{Question3(t=25)_errors.pdf}
 \includegraphics[width=0.48\linewidth]{Question3(t=50).pdf}
@@ -88,6 +89,7 @@ whereas for the BTCS an unconditional stability is found for any value of the co
 In order to check whether this is true, the computation of the numerical solution can be performed using different values of the time step $\Delta t$, so that the coefficient $d$ be smaller or greater than 0.5.
 
 \begin{figure}[!tbh]
+\centering
 \includegraphics[width=0.48\linewidth]{Q4_b(t=4).pdf}
 \includegraphics[width=0.48\linewidth]{Q4_b(t=4)_errors.pdf}
 \includegraphics[width=0.48\linewidth]{Q4_c(t=4).pdf}
@@ -109,12 +111,16 @@ For this modified function, the arguments are no longer the time steps and their
 In figure \ref{fig:Q5} a graph of the order of convergence of the FTCS is presented together with the data related to the BTCS implementation: it can be seen how the BTCS order of convergence is approximately 2 (almost parallel to the solid line displayed, which has slope 2), whereas the FTCS presents a much lower order of convergence.
 
 \begin{figure}[!tbh]
-\includegraphics[width=0.48\linewidth]{L2errorPlot10.pdf}
+\centering
+\includegraphics[width=0.68\linewidth]{L2errorPlot10.pdf}
 
 \caption{Order of convergence of FTCS and BTCS schemes for a fixed $d=0.16$. The blue solid line represents the function $y=8\cdot(\Delta x)^2$ and is displayed to analyse the trend in BTCS, which has a similar behaviour.
-\label{fig:Q4}}
+\label{fig:Q5}}
 \end{figure}
 
+\item 
+\item The code for this assignment is also in the github repository\\
+\url{https://github.com/and1994/Diffusion.git}, commit id ?????????????? (this repository is public).
 
 
 \end{enumerate}
