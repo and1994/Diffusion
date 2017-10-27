@@ -15,6 +15,20 @@ def FTCS(phiOld, d, nt):
     there. Furthermore, boundary conditions (gradient of phi = 0 at the
     boundary points) are imposed.
     """
+    
+    # arguments test
+    if nt<=0:
+        raise ValueError('Error in FTCS: Argument nt to FTCS should be > 0')
+    if not(int(nt) == nt):
+        raise ValueError('Error in FTCS:\
+                         Argument nt to FTCS should be an integer')
+    if not(isinstance(float(d),float) and float(d) > 0):
+        raise TypeError('Error in FTCS:\
+                        Argument d to FTCS should be a positive float')
+    if not(isinstance(phiOld,np.ndarray)):
+        raise TypeError('Error in FTCS:\
+                        Argument phiOld to FTCS should be an array')
+    
     nx = len(phiOld)
     
     # new time-step array for phi
@@ -46,6 +60,19 @@ def BTCS(phi, d, nt):
     Diffusion of profile in phi using BTCS using non-dimensional diffusion
     coefficient d, assuming fixed value boundary conditions.
     """
+    # arguments test
+    if nt<=0:
+        raise ValueError('Error in BTCS: Argument nt to BTCS should be > 0')
+    if not(int(nt) == nt):
+        raise ValueError('Error in BTCS:\
+                         Argument nt to BTCS should be an integer')
+    if not(isinstance(float(d),float) and float(d) > 0):
+        raise TypeError('Error in BTCS:\
+                        Argument d to BTCS should be a positive float')
+    if not(isinstance(phiOld,np.ndarray)):
+        raise TypeError('Error in BTCS:\
+                        Argument phiOld to BTCS should be an array')
+    
     nx = len(phi)
      
     # array representing BTCS

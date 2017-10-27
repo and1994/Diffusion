@@ -24,3 +24,13 @@ def squareWave(x,alpha,beta):
 
     return phi
 
+"""
+def naive(x,alpha,beta):
+    phi=np.zeros_like(x)
+    dx=x[1]-x[0]
+    west_limit=int(alpha/dx)
+    east_limit=int(beta/dx)
+    for j in range(west_limit+1,east_limit+1):
+        phi[j]=1.
+    return phi
+"""
