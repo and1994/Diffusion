@@ -50,7 +50,7 @@ def FTCS(phiOld, d, nt):
         phi[nx-1] = phiOld[0] + d*(phiOld[nx-3] - 2*phiOld[nx-2] + phiOld[nx-1])
         phi[nx-2] = phi[nx-1]
         # output to phiOld for the next time-step
-        phiOld = phi
+        phiOld = phi.copy()
         
     return phi
     
@@ -69,9 +69,9 @@ def BTCS(phi, d, nt):
     if not(isinstance(float(d),float) and float(d) > 0):
         raise TypeError('Error in BTCS:\
                         Argument d to BTCS should be a positive float')
-    if not(isinstance(phiOld,np.ndarray)):
+    if not(isinstance(phi,np.ndarray)):
         raise TypeError('Error in BTCS:\
-                        Argument phiOld to BTCS should be an array')
+                        Argument phi to BTCS should be an array')
     
     nx = len(phi)
      
