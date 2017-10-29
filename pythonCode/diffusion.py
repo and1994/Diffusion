@@ -19,6 +19,11 @@ def main(xmin = 0., xmax = 1., nx = 41, nt = 40, dt = 0.1, d=0.16, K = 1e-3, \
     Diffuse a squareWave between squareWaveMin and squareWaveMax on a domain
     between x = xmin and x = xmax split over nx spatial steps with diffusion
     coefficient K, time step dt for nt time steps.
+    It may seem that some arguments are defined in the wrong place: 
+    that is because in different situations one may wish to fix d and vary
+    other parameters: However, if some arguments are difined at the beginning
+    even if they will be changed, this redefinition has no effects to the aim of
+    the code.
     """
     
     
