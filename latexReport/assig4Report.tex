@@ -19,7 +19,7 @@
 \begin{document}
 \thispagestyle{empty}
 
-\title{MTMW12, Assignment 1: Diffusion}
+\title{MTMW12, Assignment 4: Diffusion}
 \author{ID 25825273}
 \maketitle
 
@@ -103,8 +103,8 @@ In order to check whether this is true, the computation of the numerical solutio
 \label{fig:Q4}}
 \end{figure}
 
-In figure \ref{fig:Q4} are presented the results of this experiments for different values of $d$ (refer to figure \ref{fig:Q1} for $d=0.16$): it can be noticed how the stability of the numerical method used in FTCS is affected by thickening the spatial grid on which the computation is performed. Similar results can be obtained if the spacial grid is fixed and the time steps are shortened, although this affects the stability in a more gradual way as $d\propto \Delta t$. \par
-On the other hand, the BTCS scheme appears to be always stable, regardless of the value of $d$, as expected.
+In figure \ref{fig:Q4} are presented the results of this experiment for different values of $d$ (refer to figure \ref{fig:Q1} for $d=0.16$): it can be noticed how the stability of the numerical method used in FTCS is compromised by the thickening of the spatial grid on which the computation is performed; an evidence of this is the oscillatory patters featured by the FTCS solutions. Similar results can be obtained even if the spatial grid's thickness is fixed and the time steps are shortened, although this affects the stability in a more gradual way as $d\propto \Delta t$. \par
+On the other hand, the BTCS scheme appears to be always stable, regardless of the value of $d$, as it was expected.
 
 \item In order to test the order of convergence of the implementation of FTCS, the function defined for this scheme has been modified so that it does not show the graph and print the values of the parameters each time. This has been done because this function is then called in another function which collects the values of the $\ell_2$ Error Norm and display them in function of the spatial step used in the scheme in a log-log graph.
 For this modified function, the arguments are no longer the time steps and their width. Instead, the non-dimensional diffusion coefficient $d$ is taken as an argument together with the number of point in the space grid, while the time steps are set in order to have a fixed $d$ as required and to have simulations of the same duration.\par
@@ -120,7 +120,8 @@ In figure \ref{fig:Q5} a graph of the order of convergence of the FTCS is presen
 \label{fig:Q5}}
 \end{figure}
 
-\item The code supplied for defining the initial conditions is defined in a way that at the points of discontinuity the value of the initial conditions array has the mean value between the adjacent points, that is 0 and 1 hence 1/2. If an attempt of defining this initial array in a more naive way is made (which can be found in the script for the initial conditions where it is defined as naive()), it can be seen that the order of convergence of both the FTCS and BTCS schemes is highly affected. This is showed in figure \ref{fig:Q6}, where an example of the outcomes of the implementation of a naive definition of initial conditions can be found, together with related graphs of the order of convergence.
+\item The code supplied for defining the initial conditions is defined in a way that at the points of discontinuity the value of the initial conditions array has the mean value between the adjacent points, that is 0 and 1 hence 1/2. If an attempt of defining this initial array in a more naive way is made (which can be found in the script for the initial conditions where it is defined as naive()), it can be seen that the order of convergence of both the FTCS and BTCS schemes is highly affected. This is showed in figure \ref{fig:Q6}, where an example of the outcomes of the implementation of a naive definition of initial conditions can be found, together with related graphs of the order of convergence.\par
+In my opinion, the reason of this negative effect on the numerical solution relies in the fact that a step function cannot be expanded through Taylor polynomials and therefore using the \emph{naive} definition of it is beyond the limits of validity of the formulas used for computing the solutions. The definition used in the previous computations, on the other hand, comprised a smoother change at the discontinuity points, hence the step function was \emph{turned} into a form which was more similar to a continual function and the Taylor expansion was more legit.
 
 \begin{figure}[!tbh]
 \centering
